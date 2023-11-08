@@ -1,6 +1,7 @@
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
   let appComponent: AppComponent;
@@ -134,6 +135,16 @@ describe('AppComponent', () => {
             feedback: 'abcdef',
           })
         ).toThrowError();
+      });
+    });
+
+    // Using HTML tree
+    describe('dom', () => {
+      describe('legent', () => {
+        it('should display right title', () => {
+          const legendEl = fixture.nativeElement.querySelector('legend');
+          expect(legendEl.textContent).toContain('Let us know what you think');
+        });
       });
     });
   });
